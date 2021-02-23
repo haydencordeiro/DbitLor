@@ -12,6 +12,11 @@ urlpatterns = [
     path('api/loggedinuserdetails/', views.ProfileView.as_view(),
          name='ProfileView'),
 
+    path('api/listallteachers/', views.ListAllTeachers,
+         name='ListAllTeachers'),
+
+
+
     path('api/applyforlor/', views.ApplyForLor,
          name='ApplyForLor'),
 
