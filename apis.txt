@@ -1,3 +1,7 @@
+Temporary Hosted Link
+https://dbit-lor.herokuapp.com/
+
+
 Login
 http://127.0.0.1:8000/token/login/
 form data:
