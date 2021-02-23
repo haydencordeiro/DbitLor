@@ -33,3 +33,16 @@ Logged In Teachers Applications
 http://127.0.0.1:8000/api/loggedinteachersapplications/
 Headers
 Authorization:Token 4534aa014e468c4dc3dcaaa4a30d5442fba43786
+
+
+
+
+
+Logged In Teachers Edit Applications
+http://127.0.0.1:8000/api/loggedinteachereditapplications/
+Headers
+Authorization:Token 4534aa014e468c4dc3dcaaa4a30d5442fba43786
+
+Body:
+appID:1 (int)
+status:"approved" ("pending","accepted","rejected")

@@ -127,3 +127,16 @@ def LoggedInTeachersApplications(request):
         return Response(ApplicationSerializer(application, many=True).data, status=status.HTTP_200_OK)
     else:
         return Response({'error': 'You Dont Have Permission To Access This'}, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(('POST',))
+@ permission_classes([IsAuthenticated])
+def LoggedInTeacherEditApplications(request):
+    if request.user.groups.filter(name="teacher").exists():
+        application = Application.objects.get(id=request.data['appID'])
+        application.status = Status.objects.get(status=request.data['status'])
+        application.save()
+
+        return Response(ApplicationSerializer(application).data, status=status.HTTP_200_OK)
+    else:
+        return Response({'error': 'You Dont Have Permission To Access This'}, status=status.HTTP_400_BAD_REQUEST)

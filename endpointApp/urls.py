@@ -25,4 +25,8 @@ urlpatterns = [
     path('api/loggedinteachersapplications/', views.LoggedInTeachersApplications,
          name='LoggedInTeachersApplications'),
 
+    path('api/loggedinteachereditapplications/', views.LoggedInTeacherEditApplications,
+         name='LoggedInTeacherEditApplications'),
+
+
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
