@@ -72,6 +72,8 @@ class ProfileView(APIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
 
 
+# Students
+
 @api_view(('POST',))
 @ permission_classes([IsAuthenticated])
 def ApplyForLor(request):
@@ -107,6 +109,20 @@ def ListAllTeachers(request):
 def LoggedInUsersApplications(request):
     if request.user.groups.filter(name="student").exists():
         application = Application.objects.all()
+
+        return Response(ApplicationSerializer(application, many=True).data, status=status.HTTP_200_OK)
+    else:
+        return Response({'error': 'You Dont Have Permission To Access This'}, status=status.HTTP_400_BAD_REQUEST)
+
+
+# Teachers
+
+@api_view(('GET',))
+@ permission_classes([IsAuthenticated])
+def LoggedInTeachersApplications(request):
+    if request.user.groups.filter(name="teacher").exists():
+        application = Application.objects.filter(
+            teacher=TeacherProfile.objects.filter(user=request.user).first())
 
         return Response(ApplicationSerializer(application, many=True).data, status=status.HTTP_200_OK)
     else:

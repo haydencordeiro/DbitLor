@@ -25,6 +25,11 @@ http://127.0.0.1:8000/api/applyforlor/
 Headers
 Authorization:Token 4534aa014e468c4dc3dcaaa4a30d5442fba43786
 Body
-teacherID 1 (int)
+teacherID:1 (int)
 
 
+
+Logged In Teachers Applications
+http://127.0.0.1:8000/api/loggedinteachersapplications/
+Headers
+Authorization:Token 4534aa014e468c4dc3dcaaa4a30d5442fba43786

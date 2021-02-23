@@ -11,18 +11,18 @@ urlpatterns = [
     path('', include('djoser.urls.authtoken')),
     path('api/loggedinuserdetails/', views.ProfileView.as_view(),
          name='ProfileView'),
-
+    # student
     path('api/listallteachers/', views.ListAllTeachers,
          name='ListAllTeachers'),
 
     path('api/loggedinusersapplications/', views.LoggedInUsersApplications,
          name='LoggedInUsersApplications'),
 
-
-
     path('api/applyforlor/', views.ApplyForLor,
          name='ApplyForLor'),
 
-
+    # teachers
+    path('api/loggedinteachersapplications/', views.LoggedInTeachersApplications,
+         name='LoggedInTeachersApplications'),
 
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
