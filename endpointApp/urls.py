@@ -8,7 +8,9 @@ from . import views
 
 urlpatterns = [
     path('', include('djoser.urls')),
-    path('', include('djoser.urls.authtoken'))
+    path('', include('djoser.urls.authtoken')),
+    path('api/loggedinuserdetails/', views.ProfileView.as_view(),
+         name='ProfileView'),
 
 
 

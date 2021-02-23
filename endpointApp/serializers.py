@@ -1,0 +1,55 @@
+
+from rest_framework import serializers
+from .models import *
+from datetime import datetime
+from django.contrib.auth.models import User
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        models = User
+        fields = '__all__'
+
+
+class StudentProfileSerializer(serializers.ModelSerializer):
+    # userR = UserSerializer(source='user_set', many=True)
+
+    class Meta:
+        model = StudentProfile
+        fields = '__all__'
+
+    def to_representation(self, instance):
+        rep = super(StudentProfileSerializer,
+                    self).to_representation(instance)
+        for i in instance.user._meta.fields:
+            if i.name != "password":
+                rep[str(i.name)] = getattr(instance.user, str(i.name))
+
+        try:
+            rep["last_login"] = instance.user.last_login.strftime(
+                '%y-%m-%d %a %I:%M:%S')
+        except:
+            pass
+        return rep
+
+
+class TeacherProfileSerializer(serializers.ModelSerializer):
+    # userR = UserSerializer(source='user_set', many=True)
+
+    class Meta:
+        model = TeacherProfile
+        fields = '__all__'
+
+    def to_representation(self, instance):
+        rep = super(TeacherProfileSerializer,
+                    self).to_representation(instance)
+        for i in instance.user._meta.fields:
+            if i.name != "password":
+                rep[str(i.name)] = getattr(instance.user, str(i.name))
+
+        try:
+            rep["last_login"] = instance.user.last_login.strftime(
+                '%y-%m-%d %a %I:%M:%S')
+        except:
+            pass
+        return rep

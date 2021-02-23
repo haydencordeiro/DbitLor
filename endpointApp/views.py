@@ -1,3 +1,71 @@
 from django.shortcuts import render
+from .models import *
+from .serializers import *
+from django.shortcuts import render
+from rest_framework import viewsets, mixins, generics
+from rest_framework.views import APIView
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+import datetime
+import time
+from rest_framework.parsers import JSONParser
+from django.utils import timezone
+from rest_framework.decorators import action
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.decorators import permission_classes
+from django.http import HttpResponse
+from django.shortcuts import render, get_object_or_404, get_list_or_404, reverse
+from django.http import (HttpResponse, HttpResponseNotFound, Http404,
+                         HttpResponseRedirect, HttpResponsePermanentRedirect)
+from django.db.models import Q
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
+from django.contrib import auth
+import requests
+from django.core.mail import send_mail
+from rest_framework import status
+from django.contrib.auth import authenticate, login
+from datetime import datetime
+from django.contrib.auth.models import User
+from django.contrib import messages
+from datetime import datetime, date
+from django.core.mail import send_mail
+import json
+from django.core.serializers.json import DjangoJSONEncoder
+import os
+from django.views.decorators.cache import cache_control
+from django.db.models import Sum
+import collections
+import json
+from datetime import date
+from django.contrib.auth.models import User
+from django.contrib.auth.models import Group
 
-# Create your views here.
+
+# add user to group
+# from django.contrib.auth.models import Group
+# my_group = Group.objects.get(name='my_group_name')
+# my_group.user_set.add(your_user)
+
+
+# check if user exist in group
+
+
+class ProfileView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, format=None, **kwargs):
+        if request.user.groups.filter(name="student").exists():  # is student
+            try:
+                user = StudentProfile.objects.get(user=request.user)
+            except:
+                return Response({'error': 'You Dont Have Permission To Access This'}, status=status.HTTP_400_BAD_REQUEST)
+            serializer = StudentProfileSerializer(user)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        else:  # is teacher
+            try:
+                user = TeacherProfile.objects.get(user=request.user)
+            except:
+                return Response({'error': 'You Dont Have Permission To Access This'}, status=status.HTTP_400_BAD_REQUEST)
+            serializer = TeacherProfileSerializer(user)
+            return Response(serializer.data, status=status.HTTP_200_OK)

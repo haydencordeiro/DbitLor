@@ -9,27 +9,11 @@ http://127.0.0.1:8000/token/logout/
 Headers
 Authorization:Token 4534aa014e468c4dc3dcaaa4a30d5442fba43786
 
-Change Password
-http://127.0.0.1:8000/users/set_password/
+
+Logged in user Details
+http://127.0.0.1:8000/api/loggedinuserdetails/
 Headers
 Authorization:Token 4534aa014e468c4dc3dcaaa4a30d5442fba43786
-Form-data
-new_password:string
-current_password:string
 
-
-Forgot Password
-
-Step1:Send Mail
-http://127.0.0.1:8000/users/reset_password/
-form-data
-email:string
-
-Step2:Confirm
-http://127.0.0.1:8000/users/reset_password_confirm/
-form-data
-uid:string(send in mail)
-token:string(send in mail)
-new_password:string
 
 
