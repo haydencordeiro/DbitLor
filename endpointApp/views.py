@@ -100,3 +100,14 @@ def ListAllTeachers(request):
         return Response(TeacherProfileSerializer(teachers, many=True).data, status=status.HTTP_200_OK)
     else:
         return Response({'error': 'You Dont Have Permission To Access This'}, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(('GET',))
+@ permission_classes([IsAuthenticated])
+def LoggedInUsersApplications(request):
+    if request.user.groups.filter(name="student").exists():
+        application = Application.objects.all()
+
+        return Response(ApplicationSerializer(application, many=True).data, status=status.HTTP_200_OK)
+    else:
+        return Response({'error': 'You Dont Have Permission To Access This'}, status=status.HTTP_400_BAD_REQUEST)

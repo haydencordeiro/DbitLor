@@ -15,6 +15,9 @@ urlpatterns = [
     path('api/listallteachers/', views.ListAllTeachers,
          name='ListAllTeachers'),
 
+    path('api/loggedinusersapplications/', views.LoggedInUsersApplications,
+         name='LoggedInUsersApplications'),
+
 
 
     path('api/applyforlor/', views.ApplyForLor,
