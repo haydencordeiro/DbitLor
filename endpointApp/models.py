@@ -21,7 +21,7 @@ class Status(models.Model):
     status = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.status
+        return str(self.status)
 
 
 class Application(models.Model):

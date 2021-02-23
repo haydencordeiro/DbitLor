@@ -11,6 +11,12 @@ class UserSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class StatusSerializer(serializers.ModelSerializer):
+    class Meta:
+        models = Status
+        fields = '__all__'
+
+
 class StudentProfileSerializer(serializers.ModelSerializer):
     # userR = UserSerializer(source='user_set', many=True)
 
@@ -52,4 +58,20 @@ class TeacherProfileSerializer(serializers.ModelSerializer):
                 '%y-%m-%d %a %I:%M:%S')
         except:
             pass
+        return rep
+
+
+class ApplicationSerializer(serializers.ModelSerializer):
+    student = StudentProfileSerializer()
+    teacher = TeacherProfileSerializer()
+    # status = StatusSerializer()
+
+    class Meta:
+        model = Application
+        fields = '__all__'
+
+    def to_representation(self, instance):
+        rep = super(ApplicationSerializer,
+                    self).to_representation(instance)
+        rep['status'] = instance.status.status
         return rep

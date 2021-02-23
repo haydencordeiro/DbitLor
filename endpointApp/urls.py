@@ -12,6 +12,9 @@ urlpatterns = [
     path('api/loggedinuserdetails/', views.ProfileView.as_view(),
          name='ProfileView'),
 
+    path('api/applyforlor/', views.ApplyForLor,
+         name='ApplyForLor'),
+
 
 
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
