@@ -1,0 +1,1 @@
+web: gunicorn DbitLor.wsgi --log-file - 
