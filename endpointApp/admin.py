@@ -27,3 +27,19 @@ class TeacherProfileListAdmin(admin.ModelAdmin):
 
 
 admin.site.register(TeacherProfile, TeacherProfileListAdmin)
+
+
+class ApplicationListAdmin(admin.ModelAdmin):
+    list_display = [
+        field.name for field in Application._meta.fields if True]
+
+
+admin.site.register(Application, ApplicationListAdmin)
+
+
+class StatusListAdmin(admin.ModelAdmin):
+    list_display = [
+        field.name for field in Status._meta.fields if True]
+
+
+admin.site.register(Status, StatusListAdmin)
