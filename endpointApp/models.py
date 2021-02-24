@@ -36,4 +36,4 @@ class Application(models.Model):
     time = models.TimeField(auto_now_add=True, blank=True, null=True)
 
     def __str__(self):
-        return self.status
+        return (self.status.status)
