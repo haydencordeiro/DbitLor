@@ -82,8 +82,8 @@ def ApplyForLor(request):
         application = Application(
             student=StudentProfile.objects.filter(
                 user=request.user).first(),
-            teacher=TeacherProfile.objects.get(
-                id=request.data['teacherID']),
+            teacher=TeacherProfile.objects.filter(
+                user=User.objects.filter(id=request.data['teacherID']).first()).first(),
             status=Status.objects.get(status="pending")
 
         )
