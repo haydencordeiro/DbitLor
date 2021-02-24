@@ -95,7 +95,8 @@ def ApplyForLor(request):
                 user=request.user).first(),
             teacher=TeacherProfile.objects.filter(
                 user=User.objects.filter(id=request.data['teacherID']).first()).first(),
-            status=Status.objects.get(status="pending")
+            status=Status.objects.get(status="pending"),
+            content=request.data['content']
 
         )
         application.save()

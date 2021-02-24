@@ -47,6 +47,7 @@ class Application(models.Model):
         Status, on_delete=models.CASCADE, null=True)
     date = models.DateField(auto_now_add=True, blank=True, null=True)
     time = models.TimeField(auto_now_add=True, blank=True, null=True)
+    content = models.TextField(blank=True, null=True)
 
     def __str__(self):
         return (self.status.status)

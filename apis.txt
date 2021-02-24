@@ -43,6 +43,7 @@ Headers
 Authorization:Token 4534aa014e468c4dc3dcaaa4a30d5442fba43786
 Body
 teacherID:1 (int)
+content: "text" (str)
 
 
 
