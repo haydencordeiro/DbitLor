@@ -13,6 +13,14 @@ from django.apps import apps
 #         pass
 
 
+class DepartmentListAdmin(admin.ModelAdmin):
+    list_display = [
+        field.name for field in Department._meta.fields if True]
+
+
+admin.site.register(Department, DepartmentListAdmin)
+
+
 class StudentProfileListAdmin(admin.ModelAdmin):
     list_display = [
         field.name for field in StudentProfile._meta.fields if True]
