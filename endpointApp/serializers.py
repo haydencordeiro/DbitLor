@@ -36,6 +36,7 @@ class StudentProfileSerializer(serializers.ModelSerializer):
                 '%y-%m-%d %a %I:%M:%S')
         except:
             pass
+        rep['dept'] = instance.dept.name
         return rep
 
 
@@ -58,6 +59,7 @@ class TeacherProfileSerializer(serializers.ModelSerializer):
                 '%y-%m-%d %a %I:%M:%S')
         except:
             pass
+        rep['dept'] = instance.dept.name
         return rep
 
 
