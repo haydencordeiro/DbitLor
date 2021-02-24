@@ -74,4 +74,5 @@ class ApplicationSerializer(serializers.ModelSerializer):
         rep = super(ApplicationSerializer,
                     self).to_representation(instance)
         rep['status'] = instance.status.status
+        rep['time'] = instance.time.strftime("%I:%M %p")
         return rep
