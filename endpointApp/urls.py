@@ -11,6 +11,13 @@ urlpatterns = [
     path('', include('djoser.urls.authtoken')),
     path('api/loggedinuserdetails/', views.ProfileView.as_view(),
          name='ProfileView'),
+    path('api/listofdepartments/', views.ListAllDepartments,
+         name='ListAllDepartments'),
+
+
+
+
+
     # student
     path('api/listallteachers/', views.ListAllTeachers,
          name='ListAllTeachers'),

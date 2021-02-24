@@ -72,6 +72,17 @@ class ProfileView(APIView):
             return Response(serializer.data, status=status.HTTP_200_OK)
 
 
+@api_view(('GET',))
+@ permission_classes([IsAuthenticated])
+def ListAllDepartments(request):
+    if request.user.groups.filter(name="student").exists():
+        dept = Department.objects.all()
+
+        return Response(DepartmentSerializer(dept, many=True).data, status=status.HTTP_200_OK)
+    else:
+        return Response({'error': 'You Dont Have Permission To Access This'}, status=status.HTTP_400_BAD_REQUEST)
+
+
 # Students
 
 @api_view(('POST',))

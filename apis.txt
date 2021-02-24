@@ -14,6 +14,12 @@ Headers
 Authorization:Token 4534aa014e468c4dc3dcaaa4a30d5442fba43786
 
 
+List Of all Departments
+http://127.0.0.1:8000/api/listofdepartments/
+Headers
+Authorization:Token 4534aa014e468c4dc3dcaaa4a30d5442fba43786
+
+
 Logged in user Details
 http://127.0.0.1:8000/api/loggedinuserdetails/
 Headers

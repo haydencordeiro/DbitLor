@@ -76,3 +76,25 @@ class ApplicationSerializer(serializers.ModelSerializer):
         rep['status'] = instance.status.status
         rep['time'] = instance.time.strftime("%I:%M %p")
         return rep
+
+
+class DepartmentSerializer(serializers.ModelSerializer):
+    # userR = UserSerializer(source='user_set', many=True)
+
+    class Meta:
+        model = Department
+        fields = '__all__'
+
+    # def to_representation(self, instance):
+    #     rep = super(TeacherProfileSerializer,
+    #                 self).to_representation(instance)
+    #     for i in instance.user._meta.fields:
+    #         if i.name != "password":
+    #             rep[str(i.name)] = getattr(instance.user, str(i.name))
+
+    #     try:
+    #         rep["last_login"] = instance.user.last_login.strftime(
+    #             '%y-%m-%d %a %I:%M:%S')
+    #     except:
+    #         pass
+    #     return rep
