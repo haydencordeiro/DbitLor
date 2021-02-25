@@ -174,9 +174,10 @@ def LoggedInTeachersApplications(request):
 @ permission_classes([IsAuthenticated])
 def LoggedInTeacherEditApplications(request):
     if request.user.groups.filter(name="teacher").exists():
-        application = Application.objects.get(id=request.data['appID'])
+        application = Application.objects.get(id=int(request.data['appID']))
         application.status = Status.objects.get(
-            status=request.data['status'], content=request.data["content"])
+            status=request.data['status'])
+        application.content = request.data["content"]
         application.save()
 
         return Response(ApplicationSerializer(application).data, status=status.HTTP_200_OK)
