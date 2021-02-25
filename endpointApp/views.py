@@ -149,7 +149,7 @@ def ListAllTeachers(request):
 def LoggedInUsersApplications(request):
     if request.user.groups.filter(name="student").exists():
         application = Application.objects.filter(student=StudentProfile.objects.filter(
-            user=request.user).first()).order_by(['date', 'time'])
+            user=request.user).first()).order_by(*['date', 'time'])
 
         return Response(ApplicationSerializer(application, many=True).data, status=status.HTTP_200_OK)
     else:
@@ -163,7 +163,7 @@ def LoggedInUsersApplications(request):
 def LoggedInTeachersApplications(request):
     if request.user.groups.filter(name="teacher").exists():
         application = Application.objects.filter(
-            teacher=TeacherProfile.objects.filter(user=request.user).first()).order_by(['date', 'time'])
+            teacher=TeacherProfile.objects.filter(user=request.user).first()).order_by(*['date', 'time'])
         return Response(ApplicationSerializer(application, many=True).data, status=status.HTTP_200_OK)
     else:
         return Response({'error': 'You Dont Have Permission To Access This'}, status=status.HTTP_400_BAD_REQUEST)
