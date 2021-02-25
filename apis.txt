@@ -77,4 +77,5 @@ Authorization:Token 4534aa014e468c4dc3dcaaa4a30d5442fba43786
 
 Body:
 appID:1 (int)
-status:"approved" ("pending","accepted","rejected")
+status:"approved" ("pending","approved","rejected")
+content:"string" (String)
