@@ -207,7 +207,7 @@ def DashboardStatsTeacher(request):
 # Teachers
 
 
-@api_view(('GET',))
+@api_view(('POST',))
 @ permission_classes([IsAuthenticated])
 def generatePDF(request):
     if request.user.groups.filter(name="student").exists():
