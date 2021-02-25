@@ -181,3 +181,26 @@ def LoggedInTeacherEditApplications(request):
         return Response(ApplicationSerializer(application).data, status=status.HTTP_200_OK)
     else:
         return Response({'error': 'You Dont Have Permission To Access This'}, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(('GET',))
+@ permission_classes([IsAuthenticated])
+def DashboardStatsTeacher(request):
+    if request.user.groups.filter(name="student").exists():
+        application = Application.objects.filter(student=StudentProfile.objects.filter(
+            user=request.user).first())
+        data = {
+
+        }
+        data['pendingReq'] = application.filter(
+            status=Status.objects.get(status="pending")).count()
+        data['approvedReq'] = application.filter(
+            status=Status.objects.get(status="approved")).count()
+        data['rejectedReq'] = application.filter(
+            status=Status.objects.get(status="rejected")).count()
+        return Response(data, status=status.HTTP_200_OK)
+    else:
+        return Response({'error': 'You Dont Have Permission To Access This'}, status=status.HTTP_400_BAD_REQUEST)
+
+
+# Teachers
