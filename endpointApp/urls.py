@@ -7,12 +7,15 @@ from rest_framework import routers
 from . import views
 
 urlpatterns = [
+
     path('', include('djoser.urls')),
     path('', include('djoser.urls.authtoken')),
     path('api/loggedinuserdetails/', views.ProfileView.as_view(),
          name='ProfileView'),
     path('api/listofdepartments/', views.ListAllDepartments,
          name='ListAllDepartments'),
+    path('token/loginwithuser/',
+         views.TokenObtainView.as_view(), name="TokenObtainView"),
 
 
 

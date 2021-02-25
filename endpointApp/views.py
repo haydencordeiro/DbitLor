@@ -49,6 +49,34 @@ from django.contrib.auth.models import Group
 # my_group.user_set.add(your_user)
 
 
+from rest_framework.authtoken.views import ObtainAuthToken
+from rest_framework.authtoken.models import Token
+
+
+class TokenObtainView(ObtainAuthToken):
+    def post(self, request, *args, **kwargs):
+        serializer = self.serializer_class(data=request.data,
+                                           context={'request': request})
+        serializer.is_valid(raise_exception=True)
+        user = serializer.validated_data['user']
+        token, created = Token.objects.get_or_create(user=user)
+        teacher = TeacherProfileSerializer(
+            TeacherProfile.objects.filter(user=user).first()).data
+        student = StudentProfileSerializer(
+            StudentProfile.objects.filter(user=user).first()).data
+
+        custom_response = {
+            'token': token.key,
+        }
+        if teacher['user'] == None:
+            custom_response['whoami'] = "student"
+            custom_response['user'] = student
+        else:
+            custom_response['whoami'] = "teacher"
+            custom_response['user'] = teacher
+
+        return Response(custom_response)
+
 # check if user exist in group
 
 

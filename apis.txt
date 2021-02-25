@@ -8,6 +8,16 @@ form data:
 username:string
 password:string
 
+
+Login With User Details
+http://127.0.0.1:8000/token/loginwithuser/
+form data:
+username:string
+password:string
+
+
+
+
 Logout
 http://127.0.0.1:8000/token/logout/
 Headers
