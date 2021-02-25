@@ -187,7 +187,7 @@ def LoggedInTeacherEditApplications(request):
 @ permission_classes([IsAuthenticated])
 def DashboardStatsTeacher(request):
     if request.user.groups.filter(name="teacher").exists():
-        application = Application.objects.filter(student=StudentProfile.objects.filter(
+        application = Application.objects.filter(teacher=TeacherProfile.objects.filter(
             user=request.user).first())
         data = {
 
