@@ -163,7 +163,7 @@ def LoggedInUsersApplications(request):
 def LoggedInTeachersApplications(request):
     if request.user.groups.filter(name="teacher").exists():
         application = Application.objects.filter(
-            teacher=TeacherProfile.objects.filter(user=request.user).first())
+            teacher=TeacherProfile.objects.filter(user=request.user).first()).order_by('-date').order_by('-time')
 
         return Response(ApplicationSerializer(application, many=True).data, status=status.HTTP_200_OK)
     else:
