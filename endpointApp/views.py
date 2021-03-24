@@ -209,7 +209,7 @@ def DashboardStatsTeacher(request):
 
 
 @api_view(('POST',))
-@ permission_classes([IsAuthenticated])
+@permission_classes([IsAuthenticated])
 def generatePDF(request):
     if request.user.groups.filter(name="student").exists():
         application = Application.objects.filter(
@@ -232,3 +232,21 @@ def generatePDF(request):
         return Response({'downloadLink': data}, status=status.HTTP_200_OK)
     else:
         return Response({'error': 'You Dont Have Permission To Access This'}, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(('POST', 'GET'))
+@permission_classes([IsAuthenticated])
+def NotificationTokenView(request):
+
+    temp = NotificationToken.objects.filter(user=request.user).first()
+    if temp is None:
+
+        temp = NotificationToken(
+            user=request.user,
+            token=request.data["token"]
+        )
+    else:
+        temp.token = request.data["token"]
+    temp.save()
+
+    return Response({}, status=status.HTTP_200_OK)

@@ -1,6 +1,25 @@
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save, post_init, pre_init
+import requests
+
+
+def sendNotification(usertoken, title, body):
+    userdata = {
+        "to": str(usertoken),
+        "body": str(title),
+        "title": str(body),
+
+
+
+    }
+    headers = {
+        "Content-Type": "application/json"
+
+    }
+    r = requests.post(
+        'https://exp.host/--/api/v2/push/send/',  json=userdata, headers=headers)
 
 
 class Department(models.Model):
@@ -51,3 +70,29 @@ class Application(models.Model):
 
     def __str__(self):
         return (self.status.status)
+
+    @staticmethod
+    def post_save(sender, instance, created, **kwargs):
+        if created:
+            instance = kwargs.get('instance')
+            teacher = NotificationToken.objects.filter(
+                user=instance.teacher.user).first()
+            sendNotification(teacher.token, "LOR Request",
+                             "A new LOR request has come")
+
+    @ staticmethod
+    def remember_status(sender, **kwargs):
+        instance = kwargs.get('instance')
+
+
+post_save.connect(Application.post_save, sender=Application)
+post_init.connect(Application.remember_status, sender=Application)
+
+
+class NotificationToken(models.Model):
+    token = models.CharField(max_length=500)
+    user = models.OneToOneField(
+        User, on_delete=models.CASCADE, blank=True, null=True)
+
+    def __str__(self):
+        return self.token

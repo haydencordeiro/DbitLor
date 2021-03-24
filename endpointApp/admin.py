@@ -13,6 +13,14 @@ from django.apps import apps
 #         pass
 
 
+class NotificationTokenListAdmin(admin.ModelAdmin):
+    list_display = [
+        field.name for field in NotificationToken._meta.fields if True]
+
+
+admin.site.register(NotificationToken, NotificationTokenListAdmin)
+
+
 class DepartmentListAdmin(admin.ModelAdmin):
     list_display = [
         field.name for field in Department._meta.fields if True]

@@ -45,4 +45,11 @@ urlpatterns = [
     path('api/generatepdf/', views.generatePDF,
          name='generatePDF'),
 
+
+
+    path('api/notificationtoken/', views.NotificationTokenView,
+         name='NotificationTokenView'),
+
+
+
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
