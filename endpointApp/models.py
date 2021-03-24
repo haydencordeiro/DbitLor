@@ -8,8 +8,8 @@ import requests
 def sendNotification(usertoken, title, body):
     userdata = {
         "to": str(usertoken),
-        "body": str(title),
-        "title": str(body),
+        "body": str(body),
+        "title": str(title),
 
 
 
@@ -37,7 +37,7 @@ class StudentProfile(models.Model):
     studentID = models.CharField(max_length=10, null=True)
 
     def __str__(self):
-        return "%s's profile" % self.user
+        return self.user.first_name + " " + self.user.last_name
 
 
 class TeacherProfile(models.Model):
@@ -79,7 +79,7 @@ class Application(models.Model):
             teacher = NotificationToken.objects.filter(
                 user=instance.teacher.user).first()
             sendNotification(teacher.token, "LOR Request",
-                             "A new LOR request has come")
+                             "{} has request for an LOR".format(instance.student))
 
     @ staticmethod
     def remember_status(sender, **kwargs):
