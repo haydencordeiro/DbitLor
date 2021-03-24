@@ -72,9 +72,10 @@ class Application(models.Model):
         return (self.status.status)
 
     @staticmethod
-    def post_save(sender, instance, created, **kwargs):
-        if created:
-            instance = kwargs.get('instance')
+    def post_save(sender, **kwargs):
+        instance = kwargs.get('instance')
+
+        if instance.status.status == "pending":
             teacher = NotificationToken.objects.filter(
                 user=instance.teacher.user).first()
             sendNotification(teacher.token, "LOR Request",
