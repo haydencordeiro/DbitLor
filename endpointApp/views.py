@@ -5,7 +5,6 @@ from .serializers import *
 from django.shortcuts import render
 from rest_framework import viewsets, mixins, generics
 from rest_framework.views import APIView
-from rest_framework.decorators import api_view
 from rest_framework.response import Response
 import datetime
 import time
@@ -42,7 +41,8 @@ from datetime import date
 from django.contrib.auth.models import User
 from django.contrib.auth.models import Group
 import requests
-
+from rest_framework_swagger import renderers
+from rest_framework.decorators import api_view, renderer_classes
 # from .render import Render
 # add user to group
 # from django.contrib.auth.models import Group
@@ -83,6 +83,7 @@ class TokenObtainView(ObtainAuthToken):
 
 class ProfileView(APIView):
     permission_classes = [IsAuthenticated]
+    serializers = UserSerializer
 
     def get(self, request, format=None, **kwargs):
         if request.user.groups.filter(name="student").exists():  # is student
@@ -116,6 +117,7 @@ def ListAllDepartments(request):
 
 @api_view(('POST',))
 @ permission_classes([IsAuthenticated])
+@renderer_classes([renderers.OpenAPIRenderer, renderers.SwaggerUIRenderer])
 def ApplyForLor(request):
     if request.user.groups.filter(name="student").exists():
 

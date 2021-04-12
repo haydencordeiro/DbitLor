@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 import os
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -44,6 +45,7 @@ INSTALLED_APPS = [
     'djoser',
     'endpointApp',
     'corsheaders',
+    'drf_yasg',
 
 ]
 
@@ -148,8 +150,18 @@ REST_FRAMEWORK = {
     ),
     'DEFAULT_PERMISSIONS_CLASSES': (
         'rest_framework.permissions.IsAuthenticated',
+    ),
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework.parsers.FormParser',
+        'rest_framework.parsers.MultiPartParser',
+        'rest_framework.parsers.JSONParser',
     )
 }
+
+SWAGGER_SETTINGS = {
+    'JSON_EDITOR': True,
+}
+
 # Djoser
 DJOSER = {
     'PASSWORD_RESET_CONFIRM_URL': 'Your UID is :{uid} and token is :{token}',
