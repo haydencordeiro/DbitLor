@@ -49,9 +49,11 @@ and the final LOR can be downloaded by the student.
 
 ### Screenshots
 
-<img src="https://github.com/haydencordeiro/DbitLor/raw/master/screenshots/login.png" width="47%"  /> 
-<img src="https://github.com/haydencordeiro/DbitLor/raw/master/screenshots/studentdash.png" width="47%"  /> <img src="./screenshots/studentapply.png" width="47%"  /> 
-<img src="https://github.com/haydencordeiro/DbitLor/raw/master/screenshots/studentapply.png" width="47%"  /> <img src="./screenshots/teacherapprove.png" width="47%"  /> 
+<img src="https://github.com/haydencordeiro/DbitLor/blob/master/screenshots/login.png" width="47%"  /> 
+<img src="https://github.com/haydencordeiro/DbitLor/blob/master/screenshots/studentapply.png" width="47%"  /> 
+<img src="https://github.com/haydencordeiro/DbitLor/blob/master/screenshots/studentdash.png" width="47%"  /> 
+<img src="https://github.com/haydencordeiro/DbitLor/blob/master/screenshots/teacherapprove.png" width="47%"  /> 
+<img src="https://github.com/haydencordeiro/DbitLor/blob/master/screenshots/teacherdash.png" width="47%"  /> 
 
 ### Built with
 
