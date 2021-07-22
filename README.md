@@ -63,12 +63,19 @@ and the final LOR can be downloaded by the student.
 
 ## Authors
 
- - Hayden Cordeiro   [Linkedin](https://github.com/haydencordeiro)  [Github](www.linkedin.com/in/haydencordeiro) 
- - Grejo Joby   [Linkedin](https://github.com/grejojoby)  [Github](https://www.linkedin.com/in/grejojoby/) 
+ - Hayden Cordeiro   
+ [![Linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/haydencordeiro/)
+ [![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/haydencordeiro)  
+
+ - Grejo Joby   
+ [![Linkedin](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/grejojoby/)
+ [![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/grejojoby)  
 
 
 ## Frontend
 [![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/grejojoby/dbit-lor)  
+
+	https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white
 
 ## Android App <a id="android"></a>
 [![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/haydencordeiro/ReactNativeDBITLOR)  
