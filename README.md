@@ -4,7 +4,9 @@
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![HMTL](https://img.shields.io/badge/HTML-239120?style=for-the-badge&logo=html5&logoColor=white)
+![React Native](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![CSS](https://img.shields.io/badge/CSS-239120?&style=for-the-badge&logo=css3&logoColor=white)
+
 
 ## Table of contents
 
@@ -17,6 +19,7 @@
 - [Built with](#built-with)
 - [Authors](#authors)
 - [Frontend](#frontend)
+- [Android App](#android)
 
 
 ## Overview
@@ -66,6 +69,10 @@ and the final LOR can be downloaded by the student.
 
 ## Frontend
 [![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)]("https://github.com/grejojoby/dbit-lor")
+
+## Android App <a id="android"></a>
+[![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)]("https://github.com/haydencordeiro/ReactNativeDBITLOR")
+
 
 
 
